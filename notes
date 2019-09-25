@@ -1,0 +1,30 @@
+
+
+Linking multiple pages in django
+----------------------------------------------
+
+set a name for app in urls.py
+
+to avoid the conflicts b/w each apps v specify appname.
+
+eg: if have same view func in multiple apps.
+so to avoid v points to the app before pointing to view func.
+thus it becomes specific to that app.
+
+
+set name atribut for each urls
+
+
+in base.html
+---------------
+
+for each href,
+
+change deafult value to
+{% url 'course_app:index' %}
+
+
+v links to the index view.
+course_app is the app name set in urls.py in app dir
+
+
