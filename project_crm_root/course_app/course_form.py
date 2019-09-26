@@ -3,6 +3,6 @@ from django import forms
 
 
 class CourseForm(forms.ModelForm):
-    class Meta():
+    class Meta:
         model = CouseModel
         fields = '__all__'

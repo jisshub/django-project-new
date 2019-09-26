@@ -10,27 +10,40 @@
     <title>Document</title>
 </head>
 <body>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+    crossorigin="anonymous"></script>
+
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+    crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T"
+    crossorigin="anonymous"></script>
     <div class="container">
 
         <form method="post" class="mt-5 pt-5">
             {% csrf_token %}
             {{myform.as_p}}
-             <button type="submit" class="btn btn-primary">Submit</button>
+            <button type="submit" class="btn btn-primary">Submit</button>
         </form>
-        <div class="mt-4">
-            <a href="{% url 'course_list' %}">Visit Courses</a>
+
+
+        <div>
+            {% if objs %}
+                <table>
+                        <tbody>
+                    {% for each in objs %}
+                       <tr>
+                            <td>{{each.coursename}}</td>
+                            <td><a href="{% url 'myapp:delete' each.id %}" class="btn btn-danger">delete</a></td>
+                            <td><a href="{% url 'myapp:edit' each.id %}" class="btn btn-success">edit</a></td>
+                       </tr>
+                    {% endfor %}                    
+                        </tbody>
+                </table>
+            {% endif %}
         </div>
     </div>
-
-
-
-
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-    crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
-    crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T"
-    crossorigin="anonymous"></script>
 
 </body>
 </html>
